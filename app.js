@@ -9,6 +9,22 @@
     });
   }
 
+  // GA4 event hooks: inactive until an approved Analytics tag is installed.
+  // Never pass names, contact details, form fields or request identifiers to GA4.
+  function emitAnalyticsEvent(eventName) {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', eventName);
+  }
+
+  // Track interest in the request form, without collecting a user's input.
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a[href]');
+    const href = link?.getAttribute('href') || '';
+    if (href === '#request' || /(?:^|\/)contact\.html#request$/.test(href)) {
+      emitAnalyticsEvent('click_request');
+    }
+  });
+
   const form = document.getElementById('requestForm');
   const intro = document.getElementById('formIntro');
   const status = document.getElementById('formStatus');
@@ -33,6 +49,16 @@
     status.hidden = false;
     status.className = 'request-status request-status--' + kind;
     status.textContent = message;
+  }
+
+  // A form-start event is emitted at most once per visit to this form.
+  if (form) {
+    let started = false;
+    form.addEventListener('focusin', (event) => {
+      if (started || !event.target.matches?.('input:not([name="website"]),select,textarea')) return;
+      started = true;
+      emitAnalyticsEvent('request_form_start');
+    });
   }
 
   if (form) form.addEventListener('submit', (event) => {
@@ -68,6 +94,8 @@
     if (event.data.status === 'success') {
       const id = String(event.data.id || '').trim();
       showStatus('درخواست شما با موفقیت ثبت شد. کارشناسان ما در اولین فرصت با شما تماس می‌گیرند.' + (id ? ' شناسه پیگیری: ' + id : ''), 'success');
+      // Count a lead only after the server confirms successful saving.
+      emitAnalyticsEvent('generate_lead');
       form.reset();
     } else {
       showStatus('ثبت درخواست موفق نبود. لطفاً دوباره تلاش کن.', 'error');
