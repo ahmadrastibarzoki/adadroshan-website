@@ -26,3 +26,23 @@
 .request-status--success{background:#eaf5ef;border:1px solid #b7dace;color:#166152}
 .request-status--pending{background:#f7f4eb;border:1px solid #cbd8d3;color:#283a38}
 .request-status--error{background:#fff0eb;border:1px solid #e8b3a9;color:#982c2c}
+
+
+/* Practical SEO/GEO article content: readable answers, examples and mobile tables */
+.article-summary{background:#edf6f0;border:1px solid #d7e7da;border-right:4px solid var(--green);border-radius:14px;padding:20px 24px;margin:0 0 32px}
+.article-summary h2{font-size:20px;margin:0 0 12px}
+.article-summary p{margin:0 0 10px}
+.article-summary .article-editorial-note{font-size:12px;color:#5f766b;margin:12px 0 0}
+.article-table-wrap{max-width:100%;overflow-x:auto;margin:20px 0 22px;border:1px solid #dce7df;border-radius:12px;scrollbar-width:thin}
+.article-data-table{width:100%;border-collapse:collapse;min-width:490px;line-height:1.8;text-align:right}
+.article-data-table th,.article-data-table td{border-bottom:1px solid #e3ebe5;padding:12px 14px;vertical-align:top;font-size:14px}
+.article-data-table th{background:#f0f7f2;color:var(--navy);font-weight:700}
+.article-data-table tbody tr:last-child td{border-bottom:0}
+.article-section h3{font-size:18px;margin:20px 0 6px;color:var(--navy)}
+.article-section ul,.article-checklist{padding-right:22px;line-height:2.2}
+.article-section li{margin-bottom:7px}
+.article-section a:not(.btn){color:var(--green);text-decoration:underline;text-underline-offset:3px}
+.article-section code{background:#edf2ee;color:var(--navy);border-radius:4px;padding:2px 5px;direction:ltr;unicode-bidi:isolate}
+.article-resources{background:#fbfcfb;border-top:1px solid #dce7df;padding-top:20px}
+.article-resources ul{margin-top:8px}
+@media(max-width:720px){.article-summary{padding:16px}.article-data-table th,.article-data-table td{padding:10px 11px;font-size:12px}}
