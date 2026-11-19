@@ -19,3 +19,10 @@
 .form-result.show{display:block}.form-result pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:2;font:inherit}
 .tiny{font-size:12px}.page-hero h1{margin-top:15px}
 @media(max-width:720px){.contact-form,.contact-side,.callout,.notice{padding:19px}}
+
+/* وضعیت ثبت درخواست مشتری */
+.request-status{margin-top:16px;padding:15px 18px;border-radius:12px;line-height:2;font-size:15px}
+.request-status[hidden]{display:none}
+.request-status--success{background:#eaf5ef;border:1px solid #b7dace;color:#166152}
+.request-status--pending{background:#f7f4eb;border:1px solid #cbd8d3;color:#283a38}
+.request-status--error{background:#fff0eb;border:1px solid #e8b3a9;color:#982c2c}
